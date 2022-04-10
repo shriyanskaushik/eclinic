@@ -26,7 +26,7 @@ class Patient(models.Model):
     username = models.CharField(max_length = 50)
     name = models.CharField(max_length = 50)
     phone_number = models.CharField(max_length = 10)
-    dob = models.DateField(null = True, defaul = NULL)
+    dob = models.DateField(null = True, default = NULL)
     locality_id = models.IntegerField()
     gender = models.PositiveIntegerField(choices = gender_choices)
 
@@ -40,7 +40,7 @@ class Doctor(models.Model):
     username = models.CharField(max_length = 50)
     name = models.CharField(max_length = 50)
     phone_number = models.CharField(max_length = 10)
-    dob = models.DateField(null = True, defaul = NULL)
+    dob = models.DateField(null = True, default = NULL)
     email_id = models.EmailField(null=True, default=NULL)
     speciality = models.CharField(max_length=25)
     hospital_id = models.PositiveIntegerField(null=True, default=NULL)
@@ -49,18 +49,18 @@ class Pharmacy(models.Model):
     username = models.CharField(max_length = 50)
     name = models.CharField(max_length = 50)
     phone_number = models.CharField(max_length = 10)
-    dob = models.DateField(null = True, defaul = NULL)
+    dob = models.DateField(null = True, default = NULL)
     email_id = models.EmailField(null=True, default=NULL)
-    manager = models.CharField(null=True, default=NULL)
+    manager = models.CharField(max_length = 50, null=True, default=NULL)
     locality_id = models.PositiveIntegerField(null=True, default=NULL)
 
 class DiagnosticLab(models.Model):
     username = models.CharField(max_length = 50)
     name = models.CharField(max_length = 50)
     phone_number = models.CharField(max_length = 10)
-    dob = models.DateField(null = True, defaul = NULL)
+    dob = models.DateField(null = True, default = NULL)
     email_id = models.EmailField(null=True, default=NULL)
-    manager = models.CharField(null=True, default=NULL)
+    manager = models.CharField(max_length = 50, null=True, default=NULL)
     locality_id = models.PositiveIntegerField(null=True, default=NULL)
 
 class PharmacyExtended(models.Model):
@@ -78,12 +78,12 @@ class DiagExtended(models.Model):
 class DoctorExtended(models.Model):
     doctor_id = models.PositiveIntegerField()
     rating = models.FloatField()
-    languages_known = models.CharField()
+    languages_known = models.CharField(max_length = 50)
     year_of_experience = models.FloatField()
 
 class Test(models.Model):
     diag_id = models.PositiveIntegerField()
-    test_name = models.CharField()
+    test_name = models.CharField(max_length = 50)
     price = models.FloatField()
 
 class PatientRecords(models.Model):
@@ -110,7 +110,7 @@ class Payment(models.Model):
     payment_choice = (
         (CASH, 'cash'),
         (DEBIT_CARD, 'debit_card'),
-        (CREDIT_CARD, 'credit_card')
+        (CREDIT_CARD, 'credit_card'),
         (UPI, 'upi')
     )
     amount = models.FloatField()
@@ -128,8 +128,8 @@ class FAQ(models.Model):
         (PHARMACY, 'pharmacy'),
         (DIAGONOSTIC, 'diagonostic')
     )
-    question = models.CharField()
-    answer = models.CharField()
+    question = models.CharField(max_length = 250)
+    answer = models.CharField(max_length = 250)
     user_type = models.PositiveSmallIntegerField(choices = user_type_choice)
 
 class DoctorFeedback(models.Model):
