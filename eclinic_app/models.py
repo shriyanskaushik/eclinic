@@ -30,6 +30,9 @@ class Patient(models.Model):
     locality_id = models.IntegerField()
     gender = models.PositiveIntegerField(choices = gender_choices)
 
+    def __str__(self):
+        return self.name
+
 class Hospital(models.Model):
     name = models.CharField(max_length = 50)
     locality_id = models.PositiveIntegerField(null = True)
@@ -100,6 +103,9 @@ class PatientRecords(models.Model):
     patient_id = models.PositiveIntegerField()
     date_time = models.DateTimeField()
     purpose = models.PositiveSmallIntegerField(choices=purpose_choice)
+
+    def __str__(self):
+        return str(self.patient_id) + "-" + str(self.date_time) + "-" + str(self.purpose)
 
 class Payment(models.Model):
     CASH = 1

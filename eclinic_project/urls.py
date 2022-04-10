@@ -20,4 +20,7 @@ from django.urls import path
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('index/', views.index),
+
+    #assistant
+    path('assistant/', views.assistant_landing_page, name = "assistant_landing_page")
 ]
